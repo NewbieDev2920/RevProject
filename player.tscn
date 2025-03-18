@@ -1,0 +1,174 @@
+[gd_scene load_steps=14 format=3 uid="uid://dx0d08ed27pab"]
+
+[ext_resource type="Script" uid="uid://bpomisc8rp6y1" path="res://Player.gd" id="1_g5cfs"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wl06c"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kxq3u"]
+points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607, 0.498884, 0.169713, 0.559144, 0.464172, 0.231051, -0.803591, 0.320455, 0.40741, 0.651043, -0.243523, -0.482789, 0.594843, 0.0822132, -0.362868, -0.682312, 0.289697, 0.469044, -0.654529, -0.0662713, -0.127444, 0.842701, -0.338103, -0.393435, -0.683942, -0.244717, 0.438255, 0.623309, 0.200849, 0.0841477, 0.977454, 0.114795, -0.0682023, -0.976458, -0.12927, 0.20055, -0.563129, -0.451454, -0.185527, 0.595453, -0.453475, -0.273363, 0.592268, 0.407754, -0.00693649, -0.476823, 0.49966, 0.375821, -0.588614, 0.316955, 0.111579, 0.563059, -0.481177, -0.41725, 0.527866, -0.270497, -0.484546, -0.596972, -0.0665097, -0.279747, 0.908561, 0.0533361, -0.250197, -0.880712, 0.205319, 0.263647, -0.902771, -0.127394, 0.293368, 0.871526, -0.157196, 0.373412, -0.526319, -0.328246, 0.499663, 0.476641, -0.00688856, 0.0531056, 0.875001, 0.324703, -0.154543, -0.590854, 0.465879, -0.0972799, -0.782358, -0.398188, -0.387649, -0.498171, 0.31565, -0.30068, -0.587995, -0.388901)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gqpq0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lewip"]
+size = Vector3(0.05, 1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lm5ap"]
+albedo_color = Color(0.684066, 0.671627, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5wos4"]
+size = Vector3(0.15, 0.4, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q5niv"]
+metallic = 0.12
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_mcsom"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Head/Camera3D:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Head/Camera3D/MeleeWeapon:position")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("Head/Camera3D/MeleeWeapon:rotation")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+
+[sub_resource type="Animation" id="Animation_2yetd"]
+resource_name = "Attack"
+length = 0.55
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/MeleeWeapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.525, -0.145), Vector3(0, 0.525, -0.55)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/MeleeWeapon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 0.0883884),
+"update": 0,
+"values": [Vector3(-0.122173, 0, 0), Vector3(-0.287979, 0.218166, -0.340339), Vector3(-0.445059, 0.558505, -0.340339)]
+}
+
+[sub_resource type="Animation" id="Animation_qnpo8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/MeleeWeapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.525, -0.045)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/MeleeWeapon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.122173, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1uvuh"]
+resource_name = "Return"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/MeleeWeapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.525, -0.145)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/MeleeWeapon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.122173, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3dppk"]
+_data = {
+&"Attack": SubResource("Animation_2yetd"),
+&"RESET": SubResource("Animation_qnpo8"),
+&"Return": SubResource("Animation_1uvuh")
+}
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8907, 0)
+collision_layer = 2
+script = ExtResource("1_g5cfs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_wl06c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_kxq3u")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.722299, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="Hitbox" type="Area3D" parent="Head/Camera3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Camera3D/Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.465527, -1.00828)
+shape = SubResource("BoxShape3D_gqpq0")
+
+[node name="MeleeWeapon" type="Node3D" parent="Head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.992546, 0.121869, 0, -0.121869, 0.992546, 0, 0.525, -0.045)
+
+[node name="Handle" type="MeshInstance3D" parent="Head/Camera3D/MeleeWeapon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.581542, -0.594504, -0.655839)
+mesh = SubResource("BoxMesh_lewip")
+surface_material_override/0 = SubResource("StandardMaterial3D_lm5ap")
+
+[node name="Head" type="MeshInstance3D" parent="Head/Camera3D/MeleeWeapon/Handle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0269204, 0.259948, -0.0798328)
+mesh = SubResource("BoxMesh_5wos4")
+surface_material_override/0 = SubResource("StandardMaterial3D_q5niv")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_mcsom")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3dppk")
+}
+autoplay = "Attack"
+speed_scale = 2.195

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://chs46eltq7r4r"]
+
+[ext_resource type="Script" uid="uid://vj16vh2fryfk" path="res://hud.gd" id="1_wdidj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_423tc"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_wdidj")
+
+[node name="FpsLabell" type="Label" parent="."]
+offset_right = 584.0
+offset_bottom = 302.0
+text = " ."
+label_settings = SubResource("LabelSettings_423tc")
