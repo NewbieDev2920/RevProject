@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://dx0d08ed27pab"]
+[gd_scene load_steps=16 format=3 uid="uid://dx0d08ed27pab"]
 
 [ext_resource type="Script" uid="uid://bpomisc8rp6y1" path="res://Player.gd" id="1_g5cfs"]
+[ext_resource type="Texture2D" uid="uid://cawooqja1skf4" path="res://icon.svg" id="2_onrkg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4flbx"]
 albedo_color = Color(1, 0.254902, 0.239216, 1)
@@ -170,9 +171,56 @@ surface_material_override/0 = SubResource("StandardMaterial3D_q5niv")
 [node name="CanvasLayer" type="CanvasLayer" parent="Head/Camera3D"]
 
 [node name="StateIndicator" type="RichTextLabel" parent="Head/Camera3D/CanvasLayer"]
+modulate = Color(0.458824, 0.184314, 1, 1)
 offset_right = 223.0
 offset_bottom = 40.0
 text = "HI"
+
+[node name="MarginContainer" type="MarginContainer" parent="Head/Camera3D/CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -128.0
+offset_right = 64.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="ColorRect" type="ColorRect" parent="Head/Camera3D/CanvasLayer/MarginContainer"]
+layout_mode = 2
+color = Color(0.230315, 0.230315, 0.230315, 0.466667)
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Head/Camera3D/CanvasLayer/MarginContainer"]
+self_modulate = Color(1, 0.490196, 1, 0.415686)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Head/Camera3D/CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_onrkg")
+
+[node name="TextureRect2" type="TextureRect" parent="Head/Camera3D/CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_onrkg")
+
+[node name="TextureRect3" type="TextureRect" parent="Head/Camera3D/CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_onrkg")
+
+[node name="StaminaIndicator" type="RichTextLabel" parent="Head/Camera3D/CanvasLayer"]
+modulate = Color(2.69532e-06, 0.900235, 0.206458, 1)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 223.0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "100%"
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_mcsom")

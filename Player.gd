@@ -77,6 +77,7 @@ func _physics_process(delta: float) -> void:
 			velocity.z = lerp(velocity.z, direction.z * applySpeed(), delta * 7.0)
 		
 	else:
+		stateIndicator.text = "IN AIR"
 		velocity.x = lerp(velocity.x, direction.x * applySpeed(), delta * 3.0)
 		velocity.z = lerp(velocity.z, direction.z * applySpeed(), delta * 3.0)
 	#Head Bob
