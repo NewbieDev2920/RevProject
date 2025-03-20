@@ -6,6 +6,7 @@ var meleeDamage = 50
 const SPEED: float = 5.0
 const JUMP_VELOCITY: float = 6
 const SENSITIVITY: float = 0.009
+const RUNNINGMULTIPLIER : float = 1.7
 
 #bob Variables
 const BOB_FREQ: float = 2.0
@@ -15,6 +16,14 @@ var t_bob = 0.0
 @onready var hitbox = $Head/Camera3D/Hitbox
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
+@onready var stateIndicator: RichTextLabel = $Head/Camera3D/CanvasLayer/StateIndicator
+
+func applySpeed() -> float:
+	if Input.is_action_pressed("sprint"):
+		stateIndicator.text = "RUNNING"
+		return SPEED * RUNNINGMULTIPLIER
+	return SPEED;
+		
 
 func melee():
 	if Input.is_action_just_pressed("fire"):
@@ -59,15 +68,17 @@ func _physics_process(delta: float) -> void:
 	var direction : Vector3 = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if is_on_floor():
 		if direction:
-			velocity.x = direction.x * SPEED
-			velocity.z = direction.z * SPEED
+			stateIndicator.text = "WALKING"
+			velocity.x = direction.x * applySpeed()
+			velocity.z = direction.z * applySpeed()
 		else:
-			velocity.x = lerp(velocity.x, direction.x *SPEED, delta * 7.0)
-			velocity.z = lerp(velocity.z, direction.z *SPEED, delta * 7.0)
+			stateIndicator.text = "IDLE"
+			velocity.x = lerp(velocity.x, direction.x * applySpeed(), delta * 7.0)
+			velocity.z = lerp(velocity.z, direction.z * applySpeed(), delta * 7.0)
 		
 	else:
-		velocity.x = lerp(velocity.x, direction.x *SPEED, delta * 3.0)
-		velocity.z = lerp(velocity.z, direction.z *SPEED, delta * 3.0)
+		velocity.x = lerp(velocity.x, direction.x * applySpeed(), delta * 3.0)
+		velocity.z = lerp(velocity.z, direction.z * applySpeed(), delta * 3.0)
 	#Head Bob
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	camera.transform.origin = _headbob(t_bob)
