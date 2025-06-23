@@ -6,11 +6,12 @@ var meleeDamage = 50
 const SPEED: float = 5.0
 const JUMP_VELOCITY: float = 6
 const SENSITIVITY: float = 0.009
+#Multiplicador de la velocidad de caminado
 const RUNNINGMULTIPLIER : float = 1.7
 
 #bob Variables
-const BOB_FREQ: float = 2.0
-const BOB_AMP: float = 0.08
+const BOB_FREQ: float = 1.4
+const BOB_AMP: float = 0.06
 var t_bob = 0.0
 
 @onready var hitbox = $Head/Camera3D/Hitbox
@@ -78,8 +79,8 @@ func _physics_process(delta: float) -> void:
 		
 	else:
 		stateIndicator.text = "IN AIR"
-		velocity.x = lerp(velocity.x, direction.x * applySpeed(), delta * 3.0)
-		velocity.z = lerp(velocity.z, direction.z * applySpeed(), delta * 3.0)
+		velocity.x = lerp(velocity.x, direction.x * applySpeed(), delta * 10.0)
+		velocity.z = lerp(velocity.z, direction.z * applySpeed(), delta * 10.0)
 	#Head Bob
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	camera.transform.origin = _headbob(t_bob)

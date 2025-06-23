@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://chs46eltq7r4r"]
 
-[ext_resource type="Script" uid="uid://vj16vh2fryfk" path="res://hud.gd" id="1_wdidj"]
+[ext_resource type="Script" uid="uid://vj16vh2fryfk" path="res://scripts/hud.gd" id="1_wdidj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_423tc"]
 
