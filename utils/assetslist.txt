@@ -1,0 +1,20 @@
+
+../assets
+['Prototype-Textures']
+['icon.svg.import', 'icon.svg']
+4
+
+../assets/Prototype-Textures
+['Green', 'Orange']
+[]
+5
+
+../assets/Prototype-Textures/Green
+[]
+['texture_08.png', 'texture_01.png.import', 'texture_08.png.import', 'texture_01.png']
+6
+
+../assets/Prototype-Textures/Orange
+[]
+['texture_01.png.import', 'texture_01.png']
+6
